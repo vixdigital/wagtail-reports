@@ -10,4 +10,10 @@
 {% block content %}
     <h1>Wagtail reports</h1>
     <p>...</p>
+
+    <ul>
+        {% for page in pages %}
+            <li>{{ page.title }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

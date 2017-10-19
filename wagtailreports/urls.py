@@ -3,6 +3,5 @@ from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
-    url('dashboard', reports, name='wagtailreports'),
-    url('settings', settings, name="wagtailreports_settings")
+    url('dashboard', reports_dashboard, name='wagtailreports_dashboard')
 ]

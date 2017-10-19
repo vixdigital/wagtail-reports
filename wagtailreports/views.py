@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
+from wagtail.wagtailcore.models import Page
 
 def reports(request):
+    live_pages = Page.objects.live()
+    
     return render(request, 'reports/dashboard.html', {
-    })
-
-def settings(request):
-    return render(request, 'reports/settings.html', {
+        'pages': live_pages
     })
