@@ -8,6 +8,84 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Wagtail reports</h1>
-    <p>...</p>
+    {% include "wagtailadmin/shared/header.html" with title="Wagtail Reports: Published Posts" icon="wagtail" %}
+    <div class="nice-padding">
+        <table class="listing">
+            <thead>
+                <tr class="table-headers">
+                    <th class="date">
+                        <a href="" class="icon icon-date icon-arrow-down-after" title="Enable ordering of all published posts by published date">Date Published</a>
+                    </th>    
+                    <th class="title">
+                        <a href="" class="icon icon-arrow-down-after ">
+                            Title
+                        </a>
+                    </th>    
+                    <th class="editor">
+                        <a href="" class="icon icon-user">
+                            Editor
+                        </a>
+                    </th>
+                    <th class="status">
+                        <a href="" class="icon icon-arrow-down-after ">
+                            Status
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>     
+                <tr>
+                    <td class="date" valign="top"><div class="human-readable-date" title="23 Apr 2017 20:03">5&nbsp;months, 4&nbsp;weeks ago</div></td>
+                    <td class="title" valign="top" data-listing-page-title="">
+                        <h2>
+                            <a href="" title="Edit this page">Desserts with Benefits</a>
+                        </h2>
+                        <ul class="actions">
+                            <li><a class="button button-secondary button-small" href="" title="Edit 'Desserts with Benefits'">Edit</a></li>
+                            <li><a class="button button-secondary button-small" href="" target="_blank" title="View live version of 'Desserts with Benefits'">View live</a></li>
+                            <li>
+                                <div class="c-dropdown  t-default" data-dropdown="">
+                                    <a href="javascript:void(0)" title="View more options for 'Desserts with Benefits'" class="c-dropdown__button  u-btn-current">
+                                        More
+                                        <div data-dropdown-toggle="" class="o-icon  c-dropdown__toggle  [ icon icon-arrow-down ]"></div>
+                                    </a>
+                                    <div class="t-dark">
+                                        <ul role="menu" class="c-dropdown__menu  u-toggle  u-arrow u-arrow--tl u-background">
+                                            <li class="c-dropdown__item ">
+                                                <a href="/admin/pages/77/move/" title="Move page 'Desserts with Benefits'" class="u-link is-live ">
+                                                    Move
+                                                </a>
+                                            </li>
+                                            <li class="c-dropdown__item ">
+                                                <a href="/admin/pages/77/copy/" title="Copy page 'Desserts with Benefits'" class="u-link is-live ">
+                                                    Copy
+                                                </a>
+                                            </li>
+                                            <li class="c-dropdown__item ">
+                                                <a href="/admin/pages/77/delete/" title="Delete page 'Desserts with Benefits'" class="u-link is-live ">
+                                                    Delete
+                                                </a>
+                                            </li>
+                                            <li class="c-dropdown__item ">
+                                                <a href="/admin/pages/77/unpublish/" title="Unpublish page 'Desserts with Benefits'" class="u-link is-live ">
+                                                    Unpublish
+                                                </a>
+                                            </li>
+                                            <li class="c-dropdown__item ">
+                                                <a href="/admin/pages/77/revisions/" title="View revision history for 'Desserts with Benefits'" class="u-link is-live ">
+                                                    Revisions
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="editor" valign="top">Editor Name</td>
+                    <td class="status" valign="top"><a href="" target="_blank" class="status-tag primary">live</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
