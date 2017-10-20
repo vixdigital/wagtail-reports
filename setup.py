@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='wagtail-reports',
-      version='0.0.1',
+      version='0.0.2',
       description='Additional reporting functionality for Wagtail to enrich the editor experience.',
       url='http://github.com/vixdigital/wagtail-reports',
       author='VIX Digital',
