@@ -8,83 +8,46 @@
 {% endblock %}
 
 {% block content %}
-    {% include "wagtailadmin/shared/header.html" with title="Wagtail Reports: Published Posts" icon="wagtail" %}
+    {% include "wagtailadmin/shared/header.html" with title="Wagtail Reports: Published Pages" icon="wagtail" %}
     <div class="nice-padding">
         <table class="listing">
             <thead>
                 <tr class="table-headers">
                     <th class="date">
-                        <a href="" class="icon icon-date icon-arrow-down-after" title="Enable ordering of all published posts by published date">Date Published</a>
+                        {% if request.GET.orderby and request.GET.orderby != 'last_published_at' %}
+                            <a href="?orderby=last_published_at" class="icon icon-date icon-arrow-down-after" title="Enable ordering of all published posts by published date">Date Published</a>    
+                        {% else %}
+                            <a href="?orderby=-last_published_at" class="icon icon-date icon-arrow-up-after" title="Enable ordering of all published posts by published date">Date Published</a>    
+                        {% endif %}
                     </th>    
                     <th class="title">
-                        <a href="" class="icon icon-arrow-down-after ">
-                            Title
-                        </a>
+                        {% if request.GET.orderby != 'title' %}
+                            <a href="?orderby=title" class="icon icon-arrow-down-after ">Title</a>
+                        {% else %}
+                            <a href="?orderby=-title" class="icon icon-arrow-up-after ">Title</a>
+                        {% endif %}
                     </th>    
-                    <th class="editor">
-                        <a href="" class="icon icon-user">
-                            Editor
-                        </a>
-                    </th>
                     <th class="status">
-                        <a href="" class="icon icon-arrow-down-after ">
+                        <div>
                             Status
-                        </a>
+                        </div>
                     </th>
                 </tr>
             </thead>
-            <tbody>     
-                <tr>
-                    <td class="date" valign="top"><div class="human-readable-date" title="23 Apr 2017 20:03">5&nbsp;months, 4&nbsp;weeks ago</div></td>
-                    <td class="title" valign="top" data-listing-page-title="">
-                        <h2>
-                            <a href="" title="Edit this page">Desserts with Benefits</a>
-                        </h2>
-                        <ul class="actions">
-                            <li><a class="button button-secondary button-small" href="" title="Edit 'Desserts with Benefits'">Edit</a></li>
-                            <li><a class="button button-secondary button-small" href="" target="_blank" title="View live version of 'Desserts with Benefits'">View live</a></li>
-                            <li>
-                                <div class="c-dropdown  t-default" data-dropdown="">
-                                    <a href="javascript:void(0)" title="View more options for 'Desserts with Benefits'" class="c-dropdown__button  u-btn-current">
-                                        More
-                                        <div data-dropdown-toggle="" class="o-icon  c-dropdown__toggle  [ icon icon-arrow-down ]"></div>
-                                    </a>
-                                    <div class="t-dark">
-                                        <ul role="menu" class="c-dropdown__menu  u-toggle  u-arrow u-arrow--tl u-background">
-                                            <li class="c-dropdown__item ">
-                                                <a href="/admin/pages/77/move/" title="Move page 'Desserts with Benefits'" class="u-link is-live ">
-                                                    Move
-                                                </a>
-                                            </li>
-                                            <li class="c-dropdown__item ">
-                                                <a href="/admin/pages/77/copy/" title="Copy page 'Desserts with Benefits'" class="u-link is-live ">
-                                                    Copy
-                                                </a>
-                                            </li>
-                                            <li class="c-dropdown__item ">
-                                                <a href="/admin/pages/77/delete/" title="Delete page 'Desserts with Benefits'" class="u-link is-live ">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                            <li class="c-dropdown__item ">
-                                                <a href="/admin/pages/77/unpublish/" title="Unpublish page 'Desserts with Benefits'" class="u-link is-live ">
-                                                    Unpublish
-                                                </a>
-                                            </li>
-                                            <li class="c-dropdown__item ">
-                                                <a href="/admin/pages/77/revisions/" title="View revision history for 'Desserts with Benefits'" class="u-link is-live ">
-                                                    Revisions
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </td>
-                    <td class="editor" valign="top">Editor Name</td>
-                    <td class="status" valign="top"><a href="" target="_blank" class="status-tag primary">live</a></td>
-                </tr>
+            <tbody>
+                {% for page in page_results %}
+                    <tr>
+                        <td class="date" valign="top">{{ page.last_published_at }}</td>
+                        <td class="title" valign="top">
+                            <h2>
+                                <a href="{{ page.url }}" title="View this page">{{ page.title }}</a>
+                            </h2>
+                        </td>
+                        <td class="status" valign="top"><a href="" target="_blank" class="status-tag primary">
+                            live
+                        </a></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
